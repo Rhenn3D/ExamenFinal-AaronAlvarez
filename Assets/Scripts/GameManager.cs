@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
 
     public Text coinText;
     int coins;
+
+    public List<GameObject> enemiesInScreen;
+
+    Enemy enemyScript = gameObject.GetComponent<Enemy>();
     
     public void GameOver()
     {
@@ -19,5 +23,10 @@ public class GameManager : MonoBehaviour
     {
         coins++;
         coinText.text = coins.ToString();
+    }
+
+    foreach (enemy in enemiesInScreen)
+    {
+        enemyScript.OnBecameVisible();
     }
 }

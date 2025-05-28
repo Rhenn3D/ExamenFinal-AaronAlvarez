@@ -19,7 +19,13 @@ public class PlayerController : MonoBehaviour
     //Variable para almacenar el input de movimiento
     float horizontal;
 
+    private Animator animator;
+
     GameManager gameManager;
+
+    public GameObject bala;
+    public Transform balaSpawn;
+    
 
     void Awake()
     {
@@ -31,6 +37,7 @@ public class PlayerController : MonoBehaviour
         sensor = GameObject.Find("GroundSensor").GetComponent<GroundSensor>();
         //Buscamos el objeto del GameManager y SFXManager lo asignamos a las variables
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -41,21 +48,38 @@ public class PlayerController : MonoBehaviour
             return;
         }    
         
-        horizontal = Input.GetAxis("Horizontal");
+        horizontal = Input.GetAxisRaw("Horizontal");
 
         if(horizontal < 0)
         {
+            animator.SetBool("isRunning", true);
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         else if(horizontal > 0)
         {
+            animator.SetBool("isRunning", true);
             transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
         }
 
         if(Input.GetButtonDown("Jump") && sensor.isGrounded)
         {
+            animator.SetBool("isJumping", true);
             rBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }        
+        else if(sensor.isGrounded)
+        {
+            animator.SetBool("isJumping", false);
+        }
+
+        if(Input.GetButtonDown("Fire1"))
+        {
+            Shoot();
+        }
+      
     }
 
     void FixedUpdate()
@@ -76,5 +100,12 @@ public class PlayerController : MonoBehaviour
             gameManager.AddCoin();
             Destroy(collider.gameObject);
         }
+    }
+     void Shoot()
+    {
+
+        Instantiate(bala, balaSpawn.position, balaSpawn.rotation);
+        
+        
     }
 }

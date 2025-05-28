@@ -10,12 +10,14 @@ public class Enemy : MonoBehaviour
     Animator anim;
     BoxCollider2D boxCollider;
     Rigidbody2D rBody;
+    public GameManager gameManager;
 
     void Awake()
     {
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         rBody = GetComponent<Rigidbody2D>();
+        GameManager gameManager = gameObject.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -65,5 +67,10 @@ public class Enemy : MonoBehaviour
                 horizontal = 1;
             }
         }
+    }
+
+    public void OnBecameVisible()
+    {
+        this.gameObject.Add(gameManager.enemiesInScreen);
     }
 }
