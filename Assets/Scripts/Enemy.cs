@@ -69,8 +69,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void OnBecameVisible()
+    /*public void OnBecameVisible()
     {
-        this.gameObject.Add(gameManager.enemiesInScreen);
+       (gameManager.enemiesInScreen).Add(this.gameObject);
     }
+    
+    public void OnBecameInvisible()
+    {
+        (gameManager.enemiesInScreen).Remove(this.gameObject);
+    }*/
 }

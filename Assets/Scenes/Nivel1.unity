@@ -2703,6 +2703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameOver: 0
   coinText: {fileID: 1157738474}
+  enemiesInScreen: []
 --- !u!4 &255703225
 Transform:
   m_ObjectHideFlags: 0
@@ -4637,7 +4638,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -95.63, y: -2.4, z: -10}
+  m_LocalPosition: {x: -95.74, y: -2.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4650,16 +4651,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d3cf7fe2297fb34e84ef83dacdfdfa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0, z: -10}
   minPosition: {x: -98.79, y: -2.51}
   maxPosition: {x: -51.6, y: -0.9}
-  followedCharacter: 0
-  desiredPosition: 0
+  followedCharacter: {fileID: 1011100088}
+  desiredPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &552328802
 GameObject:
   m_ObjectHideFlags: 0
@@ -8266,6 +8267,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1011100088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7102897459264945056, guid: 457cbd0a68e12d34aa6e0bc2bcb40d2c, type: 3}
+  m_PrefabInstance: {fileID: 7102897459548015060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1011100094 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7102897459264945059, guid: 457cbd0a68e12d34aa6e0bc2bcb40d2c, type: 3}
